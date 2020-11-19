@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Permanent+Marker&display=swap');
+
+body{ 
+  line-height: 1.5; 
+  background-color: lightslategray; 
+} 
+
+img{    
+  display: block; 
+  margin: 5px auto; 
+}
+
+div{    
+  background-color: darkslategray;
+  color: whitesmoke;
+  width: 60%; 
+  margin: 0 auto;
+  font-size: 1.5rem;
+  padding: 20px; 
+  border-radius: 20px;  
+} 
+
+#divFeedback{
+  font-family: 'Pacifico', cursive; 
+} 
+
+#divOldFeedback{
+  font-family: 'Permanent Marker', cursive;
+} 
