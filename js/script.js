@@ -1,20 +1,20 @@
 "use strict";
 
-window.addEventListener("load", Initieer);
+window.addEventListener("load", initialize);
 
-var divJSONFeedback;
+let divJSONFeedback;
 
-function Initieer() {
+function initialize() {
   //   DOM   elementen ophalen
-  divJSONFeedback = document.getElementById('divJSONFeedback');
+  divJSONFeedback = document.getElementById('feedback');
 
   //FunctieUitvoer
-  VulInfo();
+  vulInfo();
 }
 
-function VulInfo() {
-  let JSONBinnenkomend = '{"lesinhoud":"JavaScript", "module": "WFA", "dag": "maandag", "lokaal": "K1.016", "gebouw": "BST1", "uren": 4}';
-  let lessen = JSON.parse(JSONBinnenkomend);
+function vulInfo() {
+  const JSONBinnenkomend = '{"lesinhoud":"JavaScript", "module": "WFA", "dag": "maandag", "lokaal": "K1.016", "gebouw": "BST1", "uren": 4}';
+  const lessen = JSON.parse(JSONBinnenkomend);
   
   divJSONFeedback.innerHTML = `De lessen ${lessen.lesinhoud} voor module ${lessen.module} 
   gaan ${lessen.dag} door in lokaal ${lessen.lokaal} in gebouw ${lessen.gebouw} 

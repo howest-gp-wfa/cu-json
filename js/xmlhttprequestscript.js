@@ -1,18 +1,18 @@
-"use strict"
+'use strict';
 
 var divOldFeedback;
 
-window.addEventListener("load", Initieer);
+window.addEventListener("load", initialize);
 
-function Initieer() {
+function initialize() {
     //   DOM   elementen ophalen
-    divOldFeedback = document.getElementById('divOldFeedback');
+    divOldFeedback = document.getElementById('feedback');
 
     //FunctieUitvoer
-    HaalInfo();
+    haalInfo();
 }
 
-function HaalInfo() {
+function haalInfo() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

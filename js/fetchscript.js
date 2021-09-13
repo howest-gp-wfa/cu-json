@@ -1,13 +1,10 @@
-"use strict"
+'use strict'
 
-var divFeedback;
+window.addEventListener("load", initialize);
 
-window.addEventListener("load", Initieer);
-
-function
-    Initieer() {
+function initialize() {
     //   DOM   elementen ophalen 
-    divFeedback = document.getElementById('divFeedback');
+    const divFeedback = document.getElementById('feedback');
 
 
 

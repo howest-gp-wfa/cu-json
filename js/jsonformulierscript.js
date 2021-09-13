@@ -1,32 +1,32 @@
-"use strict";
+'use strict';
 
-window.addEventListener("load", Initieer);
+window.addEventListener("load", initialize);
 
-var divJSONUitgebreid;
-var slcLocatie;
+let divJSONUitgebreid;
+let slcLocatie;
 
-function Initieer() {
+function initialize() {
   //   DOM   elementen ophalen
-  divJSONUitgebreid = document.querySelector('#divJSONUitgebreid');
-  slcLocatie = document.querySelector('#slcLocatie');
+  divJSONUitgebreid = document.querySelector('#json-uitgebreid');
+  slcLocatie = document.querySelector('#locatie');
 
   //   Eventlisteners
-  slcLocatie.addEventListener("change", ToonInhoudLessen);
+  slcLocatie.addEventListener("change", toonInhoudLessen);
 
   //FunctieUitvoer
-  VulSelect();
-  ToonInhoudLessen();
+  vulSelect();
+  toonInhoudLessen();
 }
 
-function VulSelect() {
+function vulSelect() {
   for (let locatie in dataLessen) {
     slcLocatie.options[slcLocatie.length] = new Option(locatie, locatie);
   }
 }
 
-function ToonInhoudLessen() {
+function toonInhoudLessen() {
   divJSONUitgebreid.innerHTML = '';
-  let keuze = slcLocatie[slcLocatie.selectedIndex].text;
+  const keuze = slcLocatie[slcLocatie.selectedIndex].text;
 
   if (Array.isArray(dataLessen[keuze])) {
 
@@ -48,8 +48,7 @@ function ToonInhoudLessen() {
   }
 
   else {
-
-    let toevoeging = document.createElement('div');
+    const toevoeging = document.createElement('div');
     let inhoudtoevoeging = "";
     
     for (let gekozenitem in dataLessen[keuze]) {
