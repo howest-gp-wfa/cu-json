@@ -1,4 +1,4 @@
-var lessonsData = {
+const lessonsData = {
     BST1: [
         {
             lesinhoud: "JavaScript",
