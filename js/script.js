@@ -1,29 +1,29 @@
-"use strict";
+'use strict';
 
 window.addEventListener("load", initialize);
 
-let divJSONFeedback;
+let divJsonFeedback;
 
 function initialize() {
   //   DOM   elementen ophalen
-  divJSONFeedback = document.getElementById('feedback');
+  divJsonFeedback = document.getElementById('feedback');
 
   //FunctieUitvoer
-  vulInfo();
+  fillData();
 }
 
-function vulInfo() {
-  const JSONBinnenkomend = '{"lesinhoud":"JavaScript", "module": "WFA", "dag": "maandag", "lokaal": "K1.016", "gebouw": "BST1", "uren": 4}';
-  const lessen = JSON.parse(JSONBinnenkomend);
+function fillData() {
+  const jsonData = '{"lesinhoud":"JavaScript", "module": "WFA", "dag": "maandag", "lokaal": "K1.016", "gebouw": "BST1", "uren": 4}';
+  const lessons = JSON.parse(jsonData);
   
-  divJSONFeedback.innerHTML = `De lessen ${lessen.lesinhoud} voor module ${lessen.module} 
-  gaan ${lessen.dag} door in lokaal ${lessen.lokaal} in gebouw ${lessen.gebouw} 
-  en duren ${ lessen.uren } uur.`; 
+  divJsonFeedback.textContent = `De lessen ${lessons.lesinhoud} voor module ${lessons.module} 
+  gaan ${lessons.dag} door in lokaal ${lessons.lokaal} in gebouw ${lessons.gebouw} 
+  en duren ${lessons.uren} uur.`; 
   
   //   OF 
- divJSONFeedback.innerHTML = `De lessen ${lessen['lesinhoud']} 
- voor module ${lessen['module']} gaan ${lessen['dag']} door 
- in lokaal ${ lessen['lokaal'] } in gebouw ${ lessen['gebouw'] } en  duren ${ lessen['uren'] } uur.`;
+ divJsonFeedback.textContent = `De lessen ${lessons['lesinhoud']} 
+ voor module ${lessons['module']} gaan ${lessons['dag']} door 
+ in lokaal ${lessons['lokaal']} in gebouw ${lessons['gebouw']} en  duren ${lessons['uren']} uur.`;
 } 
 
 

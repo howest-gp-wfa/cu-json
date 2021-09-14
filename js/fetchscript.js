@@ -1,6 +1,6 @@
 'use strict'
 
-window.addEventListener("load", initialize);
+window.addEventListener('load', initialize);
 
 function initialize() {
     //   DOM   elementen ophalen 
@@ -14,6 +14,6 @@ function initialize() {
             return resp.json();
         }).then(function (data) {
             console.log(data);
-            divFeedback.innerHTML = data.value.joke;
+            divFeedback.textContent = data.value.joke;
         }).catch(error => console.log(error));
-} 
+}

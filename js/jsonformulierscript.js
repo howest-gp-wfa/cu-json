@@ -1,62 +1,61 @@
 'use strict';
 
-window.addEventListener("load", initialize);
+window.addEventListener('load', initialize);
 
-let divJSONUitgebreid;
-let slcLocatie;
+let divJsonExtended;
+let slcLocation;
 
 function initialize() {
   //   DOM   elementen ophalen
-  divJSONUitgebreid = document.querySelector('#json-uitgebreid');
-  slcLocatie = document.querySelector('#locatie');
+  divJsonExtended = document.querySelector('#json-extended');
+  slcLocation = document.querySelector('#location');
 
   //   Eventlisteners
-  slcLocatie.addEventListener("change", toonInhoudLessen);
+  slcLocation.addEventListener('change', showLessonsContent);
 
   //FunctieUitvoer
-  vulSelect();
-  toonInhoudLessen();
+  fillSelect();
+  showLessonsContent();
 }
 
-function vulSelect() {
-  for (let locatie in dataLessen) {
-    slcLocatie.options[slcLocatie.length] = new Option(locatie, locatie);
+function fillSelect() {
+  for (let location in lessonsData) {
+    slcLocation.options[slcLocation.length] = new Option(location, location);
   }
 }
 
-function toonInhoudLessen() {
-  divJSONUitgebreid.innerHTML = '';
-  const keuze = slcLocatie[slcLocatie.selectedIndex].text;
+function showLessonsContent() {
+  divJsonExtended.innerHTML = '';
+  const selected = slcLocation[slcLocation.selectedIndex].text;
 
-  if (Array.isArray(dataLessen[keuze])) {
+  if (Array.isArray(lessonsData[selected])) {
 
-    for (let i = 0; i < dataLessen[keuze].length; i++) {
+    for (let i = 0; i < lessonsData[selected].length; i++) {
 
-      let toevoeging = document.createElement('div');
-      let inhoudtoevoeging = '';
+      const newDiv = document.createElement('div');
+      let newContent = '';
 
-      for (let gekozenitem in dataLessen[keuze][i]) {
-        inhoudtoevoeging += `${gekozenitem}: ${dataLessen[keuze][i][gekozenitem]} <br/>`;
+      for (let selectedItem in lessonsData[selected][i]) {
+        newContent += `${selectedItem}: ${lessonsData[selected][i][selectedItem]} <br/>`;
       }
 
-      toevoeging.setAttribute('style', 'background-color: green');
+      newDiv.setAttribute('style', 'background-color: green');
 
-      toevoeging.innerHTML = inhoudtoevoeging;
-      divJSONUitgebreid.appendChild(toevoeging);
-
+      newDiv.innerHTML = newContent;
+      divJsonExtended.appendChild(newDiv);
     }
   }
 
   else {
-    const toevoeging = document.createElement('div');
-    let inhoudtoevoeging = "";
+    const newDiv = document.createElement('div');
+    let newContent = '';
     
-    for (let gekozenitem in dataLessen[keuze]) {
-      inhoudtoevoeging += gekozenitem + " : " + dataLessen[keuze][gekozenitem] + "<br/>";
+    for (let selectedItem in lessonsData[selected]) {
+      newContent += selectedItem + ' : ' + lessonsData[selected][selectedItem] + '<br/>';
     }
 
-    toevoeging.innerHTML = inhoudtoevoeging;
-    divJSONUitgebreid.appendChild(toevoeging);
+    newDiv.innerHTML = newContent;
+    divJsonExtended.appendChild(newDiv);
   }
 }
 
